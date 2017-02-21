@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <rosparam file="$(find compliance_controllers)/config/ur10.yaml" command="load"/>
+
+</launch>

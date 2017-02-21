@@ -1,0 +1,33 @@
+<package>
+
+  <name>compliance_controllers_testsuite</name>
+  <version>0.0.1</version>
+
+  <description>n/a</description>
+  <author email="marcus.adam.johansson@gmail.com">Marcus A Johansson</author>
+  <maintainer email="marcus.adam.johansson@gmail.com">Marcus A Johansson</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>controller_interface</build_depend>
+  <build_depend>orocos_kdl</build_depend>
+  <build_depend>kdl_parser</build_depend>
+  <build_depend>compliance_controllers</build_depend>
+  <build_depend>compliance_controllers_msgs_srvs</build_depend>
+  <build_depend>tf</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>controller_interface</run_depend>
+  <run_depend>orocos_kdl</run_depend>
+  <run_depend>kdl_parser</run_depend>
+  <run_depend>tf</run_depend>
+
+</package>

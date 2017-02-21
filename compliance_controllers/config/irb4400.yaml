@@ -1,0 +1,39 @@
+irb4400:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  admittance_controller:
+    type: irb4400/AdmittanceController
+    sampling_time: 20 #ms
+    joints:
+      - irb4400_joint_1_2
+      - irb4400_joint_2_7
+      - irb4400_joint_7_8
+      - irb4400_joint_8_9
+      - irb4400_joint_9_10
+      - irb4400_joint_10_11
+    root_name: base_link
+    tip_name: irb4400_link_11_toolholder
+    initial_trajectory_pose: [1.2, 0.0, 1.6, 0.0, 0.0, 0.0]
+    pinv_damp_coeff: 0.01
+    mass: [0.5, 1.0, 1.0, 1.0, 1.0, 0.5]
+    damping: [1.0, 1.0, 1.0, 1.0, 1.0, 5.0]
+    stiffness: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  impedance_controller:
+    type: irb4400/ImpedanceController
+    sampling_time: 20 #ms
+    joints:
+      - irb4400_joint_1_2
+      - irb4400_joint_2_7
+      - irb4400_joint_7_8
+      - irb4400_joint_8_9
+      - irb4400_joint_9_10
+      - irb4400_joint_10_11
+    root_name: base_link
+    tip_name: irb4400_link_11_toolholder
+    initial_trajectory_pose: [1.2, 0.0, 1.7, 0.0, 0.0, 0.0]
+    pinv_damp_coeff: 0.01
+    #mass: [35.0, 35.0, 35.0, 35.0, 35.0, 35.0]
+    mass: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    damping: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+    stiffness: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]

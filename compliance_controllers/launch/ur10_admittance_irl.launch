@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+  <rosparam file="$(find compliance_controllers)/config/ur10.yaml" command="load"/>
+
+  <node name="ros_control_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="admittance_controller" />
+
+</launch>

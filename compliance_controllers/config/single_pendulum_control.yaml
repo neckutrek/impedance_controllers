@@ -1,0 +1,48 @@
+pendulum:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  joint1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Velocity Controllers ---------------------------------------
+  joint1_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: joint1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Impedance Controllers -------------------------------------
+  reload_impedance_controller:
+    type: irb4400/ImpedanceController
+    sampling_time: 20 #ms
+    joints:
+      - joint1
+    root_name: world
+    tip_name: link3
+    initial_trajectory_pose: [0.0, 0.1, 2.85, 0.0, 0.0, 0.0]
+    pinv_damp_coeff: 0.01
+    #mass: [35.0, 35.0, 35.0, 35.0, 35.0, 35.0]
+    mass: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    damping: [50.0, 50.0, 50.0, 50.0, 50.0, 50.0]
+    stiffness: [50.0, 50.0, 50.0, 50.0, 50.0, 50.0]
+
+  # Admittance Controllers -------------------------------------
+  reload_admittance_controller:
+    type: irb4400/AdmittanceController
+    sampling_time: 20 #ms
+    joints:
+      - joint1
+    root_name: world
+    tip_name: link3
+    initial_trajectory_pose: [0.0, 0.1, 2.85, 0.0, 0.0, 0.0]
+    pinv_damp_coeff: 0.01
+    #mass: [35.0, 35.0, 35.0, 35.0, 35.0, 35.0]
+    mass: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    damping: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    stiffness: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+

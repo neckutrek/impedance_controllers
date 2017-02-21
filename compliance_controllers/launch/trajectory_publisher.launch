@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="trajectory_publisher" 
+        pkg="compliance_controllers"
+        output="screen"
+        type="trajectory_publisher"
+        ns="/"/>
+
+</launch>

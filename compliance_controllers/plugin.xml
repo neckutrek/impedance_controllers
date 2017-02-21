@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<library path="lib/libcompliance_controllers">
+
+  <class name="irb4400/DummyPositionController" 
+         type="irb4400::DummyPositionController" 
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      A joint position controller that mimics a mass-spring-damper system following a trajectory.
+    </description>
+  </class>
+
+  <class name="irb4400/AdmittanceController" 
+         type="irb4400::AdmittanceController" 
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      A joint velocity controller that mimics a mass-spring-damper system following a trajectory.
+    </description>
+  </class>
+
+  <class name="irb4400/ImpedanceController" 
+         type="irb4400::ImpedanceController" 
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      A joint effort controller that mimics a mass-spring-damper system following a trajectory.
+    </description>
+  </class>
+
+</library>

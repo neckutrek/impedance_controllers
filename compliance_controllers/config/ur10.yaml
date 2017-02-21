@@ -1,0 +1,81 @@
+initial_pose_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+
+  #constraints:
+    #goal_time: 0.5                   # Override default
+    #stopped_velocity_tolerance: 0.02 # Override default
+
+  gains: # Required because we're controlling an effort interface
+    shoulder_pan_joint:  {p: 10,  d: 5, i: 1, i_clamp: 10}
+    shoulder_lift_joint: {p: 10,  d: 5, i: 1, i_clamp: 10}
+    elbow_joint:         {p: 10,  d: 5, i: 1, i_clamp: 10}
+    wrist_1_joint:       {p: 10,  d: 5, i: 1, i_clamp: 10}
+    wrist_2_joint:       {p: 10,  d: 5, i: 1, i_clamp: 10}
+    wrist_3_joint:       {p: 10,  d: 5, i: 1, i_clamp: 10}
+
+  state_publish_rate:  25            # Override default
+  action_monitor_rate: 30            # Override default
+  #stop_trajectory_duration: 0        # Override default
+
+dummy_position_controller:
+  type: irb4400/DummyPositionController
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+
+admittance_controller:
+  type: irb4400/AdmittanceController
+  sampling_time: 20 #ms
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+  root_name: world
+  ee_name: ee_link
+  tip_name: ee_link
+  initial_joint_configuration: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+  #initial_trajectory_pose: [0.7, 0.3, 0.3, 0.0, 0.0, 0.0] # simulation
+  initial_trajectory_pose: [0.6, 0.1, 0.3, 0.0, 0.0, 0.0] # in-real-life
+  pinv_damp_coeff: 0.01
+
+  #mass: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0] # simulation
+  #damping: [5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+  #stiffness: [10.0, 10.0, 5.0, 7.0, 7.0, 5.0]
+
+  mass: [15.0, 15.0, 10.0, 7.0, 7.0, 7.0] # in real life
+  damping: [26.0, 26.0, 23.0, 13.0, 13.0, 13.0]
+  stiffness: [7.0, 7.0, 7.0, 4.0, 4.0, 4.0]
+
+impedance_controller:
+  type: irb4400/ImpedanceController
+  sampling_time: 20 #ms
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+  root_name: world
+  ee_name: ee_link
+  tip_name: bolt_link
+  initial_joint_configuration: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+  initial_trajectory_pose: [0.8, 0.1, 1.5, 0.0, 0.0, 0.0]
+  pinv_damp_coeff: 0.01
+  mass: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+  damping: [5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+  stiffness: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
